@@ -217,8 +217,8 @@ public class QuadTree {
     public QuadTree clone() {
         int x1 = this.root_.getX();
         int y1 = this.root_.getY();
-        int x2 = x1 + this.root_.getW();
-        int y2 = y1 + this.root_.getH();
+        int x2 = (int)(x1 + this.root_.getW());
+        int y2 = (int)(y1 + this.root_.getH());
         final QuadTree clone = new QuadTree(x1, y1, x2, y2);
         // This is inefficient as the clone needs to recalculate the structure of the
         // tree, even though we know it already.  But this is easier and can be
@@ -340,13 +340,13 @@ public class QuadTree {
 
         int x = node.getX();
         int y = node.getY();
-        int hw = node.getW() / 2;
-        int hh = node.getH() / 2;
+        double hw = node.getW() / 2;
+        double hh = node.getH() / 2;
 
         node.setNw(new Node(x, y, hw, hh, node));
-        node.setNe(new Node(x + hw, y, hw, hh, node));
-        node.setSw(new Node(x, y + hh, hw, hh, node));
-        node.setSe(new Node(x + hw, y + hh, hw, hh, node));
+        node.setNe(new Node((int)(x + hw), y, hw, hh, node));
+        node.setSw(new Node(x, (int)(y + hh), hw, hh, node));
+        node.setSe(new Node((int)(x + hw), (int)(y + hh), hw, hh, node));
 
         this.insert(node, oldEvent);
     }

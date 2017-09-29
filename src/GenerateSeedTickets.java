@@ -4,6 +4,10 @@ import java.util.List;
 
 public class GenerateSeedTickets {
 
+    /**
+     * generates 100 tickets with random values between 0 and 100
+     * @return {List} list of tickets
+     */
     public static List<Ticket> generateSeedTickets(){
         List<Ticket> seedTickets = new ArrayList<Ticket>();
         for(int i = 0; i < 100; i++){
