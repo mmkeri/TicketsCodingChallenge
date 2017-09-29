@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.List;
+import java.util.TreeMap;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -13,12 +16,47 @@ public class EventShould {
     private Event testEvent = new Event(1, 5, 7);
 
     @Test
+    public void addOneTicketToTheEventsList(){
+        assertEquals(0, testEvent.getEventTickets().size());
+        testEvent.addTicket(ticketOne.getPrice(), ticketOne);
+        assertEquals(1, testEvent.getEventTickets().size());
+    }
+
+    @Test
+    public void addTwoTicketsToTheEventsList(){
+        assertEquals(0, testEvent.getEventTickets().size());
+        testEvent.addTicket(ticketOne.getPrice(), ticketOne);
+        testEvent.addTicket(ticketTwo.getPrice(), ticketTwo);
+        assertEquals(2, testEvent.getEventTickets().size());
+    }
+
+    @Test
+    public void returnTheSameTicketThatWasAddedToTheList(){
+        testEvent.addTicket(ticketOne.getPrice(), ticketOne);
+        List<Ticket> result = testEvent.getEventTickets().get(ticketOne.getPrice());
+        assertEquals(ticketOne, result.get(0));
+    }
+
+    @Test
     public void returnTheLowestPricedTicketFromTheEventList(){
         testEvent.addTicket(ticketOne.getPrice(), ticketOne);
         testEvent.addTicket(ticketTwo.getPrice(), ticketTwo);
         testEvent.addTicket(ticketThree.getPrice(), ticketThree);
         testEvent.addTicket(ticketFour.getPrice(), ticketFour);
         assertEquals(ticketTwo, testEvent.getLowestPricedTicket());
+    }
+
+    @Test
+    public void returnTheMapOfEventTickets(){
+        testEvent.addTicket(ticketOne.getPrice(), ticketOne);
+        testEvent.addTicket(ticketTwo.getPrice(), ticketTwo);
+        testEvent.addTicket(ticketThree.getPrice(), ticketThree);
+        testEvent.addTicket(ticketFour.getPrice(), ticketFour);
+        TreeMap<Double, List<Ticket>> result = testEvent.getEventTickets();
+        assertTrue(result.containsKey(ticketOne.getPrice()));
+        assertTrue(result.containsKey(ticketTwo.getPrice()));
+        assertTrue(result.containsKey(ticketThree.getPrice()));
+        assertTrue(result.containsKey(ticketFour.getPrice()));
     }
     @Test
     public void returnTheCorrectXCoordinateForTheEvent(){
@@ -29,6 +67,9 @@ public class EventShould {
     public void returnTheCorrectYCoordinateForTheEvent(){
         assertEquals(7, testEvent.getyCoord());
     }
+
+    @Test
+    public void returnTheCorrectEventCode(){assertEquals(1, testEvent.getEventCode());}
 
     @Test
     public void returnTrueIfTwoEventsHaveTheSameEventCodeAndSameCoordinates(){

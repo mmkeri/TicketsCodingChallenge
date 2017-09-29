@@ -30,7 +30,8 @@ public class Main {
             }
         }
         for(Event e: result){
-            System.out.println(e.toString() + "Manhattan distance " + DistancesMap.calculateManhattanDistance(e, testPosition));
+            double cheapestTicketPrice = e.getLowestPricedTicket().getPrice();
+            System.out.println("Event " + e.getEventCode() + " - $" + cheapestTicketPrice + ", Manhattan distance " + ManhattanDistances.calculateManhattanDistance(e, testPosition));
         }
     }
 }

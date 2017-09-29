@@ -15,10 +15,10 @@ public class Node {
     /**
      * Constructs a new quad tree node.
      *
-     * @param {double} x X-coordinate of node.
-     * @param {double} y Y-coordinate of node.
-     * @param {double} w Width of node.
-     * @param {double} h Height of node.
+     * @param {int} x X-coordinate of node.
+     * @param {int} y Y-coordinate of node.
+     * @param {int} w Width of node.
+     * @param {int} h Height of node.
      * @param {Node}   opt_parent Optional parent node.
      * @constructor
      */
