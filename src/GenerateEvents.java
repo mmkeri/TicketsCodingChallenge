@@ -7,11 +7,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GenerateEvents {
 
     public static int generateRandomCoordinate() {
-        int random = ThreadLocalRandom.current().nextInt(-10, 10 + 1);
+        int random = ThreadLocalRandom.current().nextInt(-10, 10);
         return random;
     }
 
-    public Set<Point> generateRandomPoints(){
+    public static Set<Point> generateRandomPoints(){
         Set<Point> set = new HashSet<Point>();
         Point test;
 
@@ -26,7 +26,7 @@ public class GenerateEvents {
         return set;
     }
 
-    public List<Event> generateEvents(){
+    public static List<Event> generateEvents(){
         Set<Point> eventPoints = generateRandomPoints();
         List<Event> generatedEvents = new ArrayList<Event>();
         int i = 1;

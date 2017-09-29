@@ -1,6 +1,3 @@
-/**
- * Created by mmkeri on 27/09/2017.
- */
 public class Position {
 
     private int xCoord;

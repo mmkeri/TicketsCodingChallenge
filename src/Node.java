@@ -5,7 +5,7 @@ public class Node {
     private int w;
     private int h;
     private Node opt_parent;
-    private Point point;
+    private Event event;
     private NodeType nodetype = NodeType.EMPTY;
     private Node nw;
     private Node ne;
@@ -70,12 +70,12 @@ public class Node {
         this.opt_parent = opt_parent;
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
-    public Point getPoint() {
-        return this.point;
+    public Event getEvent() {
+        return this.event;
     }
 
     public void setNodeType(NodeType nodetype) {

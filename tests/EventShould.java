@@ -3,9 +3,7 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
-/**
- * Created by mmkeri on 27/09/2017.
- */
+
 public class EventShould {
 
     private Ticket ticketOne = new Ticket(35.90);
