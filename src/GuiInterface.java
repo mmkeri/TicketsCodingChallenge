@@ -124,28 +124,6 @@ public class GuiInterface{
             Map.Entry<Integer, Event> fifthEntry = itr.next();
             result5.setText("Event " + fifthEntry.getValue().getEventCode() + " - $" + fifthEntry.getValue().getLowestPricedTicket().getPrice()
                     + ", Distance " + fifthEntry.getKey());
-
-            /*
-            Map.Entry<Integer, Event> firstEntry = lowestEvents.firstEntry();
-            result1.setText("Event " + firstEntry.getValue().getEventCode() + " - $" + firstEntry.getValue().getLowestPricedTicket().getPrice()
-            + ", Distance " + firstEntry.getKey());
-
-            Map.Entry<Integer, Event> secondEntry = lowestEvents.ceilingEntry(firstEntry.getKey());
-            result2.setText("Event " + secondEntry.getValue().getEventCode() + " - $" + secondEntry.getValue().getLowestPricedTicket().getPrice()
-                    + ", Distance " + secondEntry.getKey());
-
-            Map.Entry<Integer, Event> thirdEntry = lowestEvents.ceilingEntry(secondEntry.getKey());
-            result3.setText("Event " + thirdEntry.getValue().getEventCode() + " - $" + thirdEntry.getValue().getLowestPricedTicket().getPrice()
-                    + ", Distance " + thirdEntry.getKey());
-
-            Map.Entry<Integer, Event> fourthEntry = lowestEvents.ceilingEntry(thirdEntry.getKey());
-            result4.setText("Event " + fourthEntry.getValue().getEventCode() + " - $" + fourthEntry.getValue().getLowestPricedTicket().getPrice()
-                    + ", Distance " + fourthEntry.getKey());
-
-            Map.Entry<Integer, Event> fifthEntry = lowestEvents.ceilingEntry(fourthEntry.getKey());
-            result5.setText("Event " + fifthEntry.getValue().getEventCode() + " - $" + fifthEntry.getValue().getLowestPricedTicket().getPrice()
-                    + ", Distance " + fifthEntry.getKey());
-                    */
         }
     }
 
