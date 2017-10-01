@@ -8,6 +8,7 @@ import java.util.List;
 
 import static javax.swing.JFrame.*;
 
+
 public class GuiInterface{
 
     JButton enterButton;
@@ -52,20 +53,20 @@ public class GuiInterface{
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JPanel btmPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JPanel centerPanel = new JPanel();
-        /*
-        GroupLayout layout = new GroupLayout(centerPanel);
-        centerPanel.setLayout(layout);
 
-        layout.setVerticalGroup(
-                layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(result1)
-                                .addComponent(result2)
-                                .addComponent(result3))
-                        .addComponent(result4)
-                        .addComponent(result5)
-        );
-        */
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+
+        result1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        result2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        result3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        result4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        result5.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        centerPanel.add(result1);
+        centerPanel.add(result2);
+        centerPanel.add(result3);
+        centerPanel.add(result4);
+        centerPanel.add(result5);
 
         btmPanel.add(enterButton);
         btmPanel.add(clearButton);
@@ -74,14 +75,6 @@ public class GuiInterface{
         topPanel.add(xCoord);
         topPanel.add(yCoordLabel);
         topPanel.add(yCoord);
-
-
-        centerPanel.add(result1, 0);
-        centerPanel.add(result2, 1);
-        centerPanel.add(result3, 2);
-        centerPanel.add(result4, 3);
-        centerPanel.add(result5, 4);
-
 
         mainPanel.add(topPanel, BorderLayout.NORTH);
         mainPanel.add(btmPanel, BorderLayout.SOUTH);
@@ -98,13 +91,15 @@ public class GuiInterface{
     class EnterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int userXCoord = Integer.parseInt(xCoord.getText());
-            int userYCoord = Integer.parseInt(yCoord.getText());
+            int userXCoord = Integer.parseInt(xCoord.getText().replace(" ", ""));
+            int userYCoord = Integer.parseInt(yCoord.getText().replace(" ", ""));
             List<Event> returnedEvents = SearchQuadTree.searchQuadTree(userXCoord, userYCoord, quadTree);
-            TreeMap<Integer, Event> lowestEvents = findCheapestEvents(returnedEvents);
-            Set<Map.Entry<Integer, Event>> lowEvents = lowestEvents.descendingMap().entrySet();
+            //BestSet lowestEvents = findCheapestEvents(returnedEvents);
+            //Collection<Map.Entry<Integer, Event>> orderedCollection = lowestEvents.flattened();
+            List<Map.Entry<Integer,Event>> returnedEvents2 = SearchQuadTree.searchQuadTree2(userXCoord, userYCoord, quadTree);
+            //Iterator<Map.Entry<Integer, Event>> itr = orderedCollection.iterator();
+            Iterator<Map.Entry<Integer, Event>> itr = returnedEvents2.iterator();
 
-            Iterator<Map.Entry<Integer, Event>> itr = lowestEvents.descendingMap().entrySet().iterator();
             Map.Entry<Integer, Event> firstEntry = itr.next();
             result1.setText("Event " + firstEntry.getValue().getEventCode() + " - $" + firstEntry.getValue().getLowestPricedTicket().getPrice()
                     + ", Distance " + firstEntry.getKey());
@@ -139,13 +134,15 @@ public class GuiInterface{
             result5.setText("");
         }
     }
-
-    private TreeMap<Integer, Event> findCheapestEvents (List<Event> returnedEvents){
-        Position userPosition = new Position(Integer.parseInt(xCoord.getText()), Integer.parseInt(yCoord.getText()));
-        TreeMap<Integer, Event> cheapestEvents = new TreeMap<Integer, Event>();
+    /*
+    private BestSet findCheapestEvents (List<Event> returnedEvents){
+        Position userPosition = new Position(Integer.parseInt(xCoord.getText().replace(" ", "")),
+                Integer.parseInt(yCoord.getText().replace(" ", "")));
+        BestSet cheapestEvents = new BestSet();
         for(Event e : returnedEvents){
-            cheapestEvents.put(ManhattanDistances.calculateManhattanDistance(e, userPosition), e);
+            cheapestEvents.add(ManhattanDistances.calculateManhattanDistance(e, userPosition), e);
         }
         return cheapestEvents;
     }
+    */
 }

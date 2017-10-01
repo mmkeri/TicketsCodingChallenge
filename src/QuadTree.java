@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedMap;
 
 public class QuadTree {
 
@@ -485,5 +486,56 @@ public class QuadTree {
         }
         node.setNodeType(NodeType.LEAF);
         node.setEvent(event);
+    }
+
+    public void search(int x, int y, BestSet bestSet, Node node){
+
+        if(node == null){
+            return;
+        }
+        
+        int x1 = node.getX(), y1 = node.getY();
+        double x2 = node.getW() + x1, y2 = node.getH() + y1;
+        Position custPosition = new Position(x, y);
+
+        if(bestSet.isAtCapacity()){
+            int furthestDistance = bestSet.getCurrentFurthestDistance();
+            if (x < x1 - furthestDistance || x > x2 + furthestDistance ||
+                y < y1 - furthestDistance || y > y2 + furthestDistance) {
+                return;
+            }
+        }
+        Event nodeEvent = node.getEvent();
+        if(nodeEvent != null) {
+            int distance = ManhattanDistances.calculateManhattanDistance(nodeEvent, custPosition);
+            bestSet.updateIfBetter(distance, nodeEvent);
+        }
+
+        double mx = node.getX() + node.getW() / 2;
+        double my = node.getY() + node.getH() / 2;
+        if (x < mx) {
+            if(y < my){
+                //parent.getNw();
+                searchFourQuadrants(x, y, bestSet, node.getNw(), node.getNe(), node.getSw(), node.getSe());
+            } else {
+                //parent.getSw();
+                searchFourQuadrants(x, y, bestSet, node.getSw(), node.getNw(), node.getSe(), node.getNe());
+            }
+        } else {
+            if(y < my) {
+                //parent.getNe();
+                searchFourQuadrants(x, y, bestSet, node.getNe(), node.getNw(), node.getSe(), node.getSw());
+            } else {
+                //parent.getSe();
+                searchFourQuadrants(x, y, bestSet, node.getSe(), node.getSw(), node.getNe(), node.getNw());
+            }
+        }
+    }
+
+    public void searchFourQuadrants(int x, int y, BestSet bestSet, Node q1, Node q2, Node q3, Node q4){
+        search(x, y, bestSet, q1);
+        search(x, y, bestSet, q2);
+        search(x, y, bestSet, q3);
+        search(x, y, bestSet, q4);
     }
 }

@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
-/**
- * Created by mmkeri on 01/10/2017.
- */
 public class SearchQuadTree {
 
     public static List<Event> searchQuadTree(int xCoord, int yCoord, QuadTree testQuadTree){
@@ -30,5 +28,11 @@ public class SearchQuadTree {
             }
         }
         return result;
+    }
+
+    public static List<Map.Entry<Integer,Event>> searchQuadTree2(int xCoord, int yCoord, QuadTree testQuadTree){
+        BestSet bestSet = new BestSet();
+        testQuadTree.search(xCoord, yCoord, bestSet, testQuadTree.getRootNode());
+        return bestSet.flattened();
     }
 }
