@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9904814f-ba75-4375-aac7-f8fbc9e21404" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GuiInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SearchQuadTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GenerateEvents.java" afterPath="$PROJECT_DIR$/src/GenerateEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GenerateSeedTickets.java" afterPath="$PROJECT_DIR$/src/GenerateSeedTickets.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/InitializeQuadTree.java" afterPath="$PROJECT_DIR$/src/InitializeQuadTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ManhattanDistances.java" afterPath="$PROJECT_DIR$/src/ManhattanDistances.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Node.java" afterPath="$PROJECT_DIR$/src/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Position.java" afterPath="$PROJECT_DIR$/src/Position.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QuadTree.java" afterPath="$PROJECT_DIR$/src/QuadTree.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,31 +27,34 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="33" column="66" lean-forward="false" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+            <state relative-caret-position="323">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#358#365#0" expanded="true" />
+                <element signature="e#416#423#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Node.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Node.java">
+      <file leaf-file-name="GuiInterface.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GuiInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="234" column="46" lean-forward="false" selection-start-line="234" selection-start-column="46" selection-end-line="234" selection-end-column="46" />
-              <folding />
+            <state relative-caret-position="269">
+              <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7165#7181#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NodeType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NodeType.java">
+      <file leaf-file-name="URLClassLoader.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/net/URLClassLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state relative-caret-position="142">
+              <caret line="380" column="0" lean-forward="false" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,24 +89,26 @@
         <option value="$PROJECT_DIR$/src/QuadTreeException.java" />
         <option value="$PROJECT_DIR$/src/NodeType.java" />
         <option value="$PROJECT_DIR$/src/Point.java" />
-        <option value="$PROJECT_DIR$/src/Ticket.java" />
         <option value="$PROJECT_DIR$/tests/TicketShould.java" />
         <option value="$PROJECT_DIR$/tests/GenerateSeedTicketsShould.java" />
         <option value="$PROJECT_DIR$/tests/GenerateEventsShould.java" />
-        <option value="$PROJECT_DIR$/src/Position.java" />
         <option value="$PROJECT_DIR$/tests/PositionShould.java" />
         <option value="$PROJECT_DIR$/src/DistancesMap.java" />
         <option value="$PROJECT_DIR$/tests/DistancesMapShould.java" />
         <option value="$PROJECT_DIR$/tests/ManhattanDistancesShould.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/tests/EventShould.java" />
-        <option value="$PROJECT_DIR$/src/QuadTree.java" />
         <option value="$PROJECT_DIR$/src/Event.java" />
         <option value="$PROJECT_DIR$/src/GenerateEvents.java" />
         <option value="$PROJECT_DIR$/src/GenerateSeedTickets.java" />
         <option value="$PROJECT_DIR$/src/InitializeQuadTree.java" />
         <option value="$PROJECT_DIR$/src/ManhattanDistances.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
+        <option value="$PROJECT_DIR$/src/Position.java" />
+        <option value="$PROJECT_DIR$/src/QuadTree.java" />
+        <option value="$PROJECT_DIR$/src/Ticket.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/SearchQuadTree.java" />
+        <option value="$PROJECT_DIR$/src/GuiInterface.java" />
       </list>
     </option>
   </component>
@@ -538,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506700093471</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Completing JavaDoc">
+      <created>1506707824530</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1506707824530</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -575,7 +586,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="40" y="23" width="1400" height="877" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -585,7 +596,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -613,7 +624,8 @@
     <MESSAGE value="Testing of the GenerateEvents class and the Point inner class" />
     <MESSAGE value="Basic testing of the Position class" />
     <MESSAGE value="More testing of the Events class" />
-    <option name="LAST_COMMIT_MESSAGE" value="More testing of the Events class" />
+    <MESSAGE value="Completing JavaDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completing JavaDoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -625,13 +637,13 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>10</line>
+          <line>12</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>31</line>
+          <line>33</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -649,7 +661,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>302</line>
+          <line>327</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -661,90 +673,93 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>174</line>
+          <line>190</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>188</line>
+          <line>204</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>207</line>
+          <line>232</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>217</line>
+          <line>242</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>247</line>
+          <line>272</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>272</line>
+          <line>297</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>360</line>
+          <line>385</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>441</line>
+          <line>466</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>457</line>
+          <line>482</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>350</line>
+          <line>375</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>335</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>336</line>
+          <line>361</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>338</line>
+          <line>363</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/QuadTree.java</url>
-          <line>340</line>
+          <line>365</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GuiInterface.java</url>
+          <line>100</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="32" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -785,26 +800,10 @@
         <state relative-caret-position="60">
           <caret line="4" column="48" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#305#306#0" expanded="false" />
+            <element signature="e#363#364#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Position.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -878,20 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/QuadTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="220" column="46" lean-forward="false" selection-start-line="220" selection-start-column="46" selection-end-line="220" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4138#4145#0" expanded="true" />
-            <element signature="e#4642#4650#0" expanded="true" />
-            <element signature="e#5086#5093#0" expanded="true" />
-            <element signature="e#5798#5805#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1545">
@@ -900,17 +885,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#366#388#0" expanded="true" />
             <element signature="e#2705#2713#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ticket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-          <folding>
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -958,17 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="33" column="66" lean-forward="false" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#358#365#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NodeType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -979,9 +942,167 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
+        <state relative-caret-position="503">
           <caret line="234" column="46" lean-forward="false" selection-start-line="234" selection-start-column="46" selection-end-line="234" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-148">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ticket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="59" column="78" lean-forward="false" selection-start-line="59" selection-start-column="78" selection-end-line="59" selection-end-column="78" />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#953#954#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QuadTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4138#4145#0" expanded="true" />
+            <element signature="e#4642#4650#0" expanded="true" />
+            <element signature="e#5221#5228#0" expanded="true" />
+            <element signature="e#5266#5701#0" expanded="true" />
+            <element signature="e#5700#5701#0" expanded="true" />
+            <element signature="e#6470#6477#0" expanded="true" />
+            <element signature="e#6515#6866#0" expanded="true" />
+            <element signature="e#6865#6866#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Position.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SearchQuadTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#292#299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/javax/swing/GroupLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="1085" column="0" lean-forward="false" selection-start-line="1085" selection-start-column="0" selection-end-line="1085" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="1629" column="0" lean-forward="false" selection-start-line="1629" selection-start-column="0" selection-end-line="1629" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#416#423#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/security/AccessController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="526" column="8" lean-forward="false" selection-start-line="526" selection-start-column="8" selection-end-line="526" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/URLClassPath.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="407" column="0" lean-forward="false" selection-start-line="407" selection-start-column="0" selection-end-line="407" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/invoke/MethodHandleNatives.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/invoke/MemberName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="1004" column="0" lean-forward="false" selection-start-line="1004" selection-start-column="0" selection-end-line="1004" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/io/FileInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="186" column="24" lean-forward="false" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="435" column="0" lean-forward="false" selection-start-line="435" selection-start-column="0" selection-end-line="435" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="380" column="0" lean-forward="false" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GuiInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7165#7181#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

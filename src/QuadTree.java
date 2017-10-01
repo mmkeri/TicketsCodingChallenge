@@ -154,6 +154,14 @@ public class QuadTree {
         return arr.toArray(new Object[arr.size()]);
     }
 
+    /**
+     * Determines whether a
+     * @param xmin
+     * @param ymin
+     * @param xmax
+     * @param ymax
+     * @return
+     */
     public Point[] searchIntersect(final int xmin, final int ymin, final int xmax, final int ymax) {
         final List<Event> arr = new ArrayList<Event>();
         this.navigate(this.root_, new Function() {
@@ -171,6 +179,14 @@ public class QuadTree {
         return arr.toArray(new Point[arr.size()]);
     }
 
+    /**
+     * Finds nodes that are located within the polygon outlined by the provided minimum and maximum coordinates
+     * @param xmin {int} the x-coordinate of the left lower corner of the polygon
+     * @param ymin {int} the y-coordinate of the left lower corner of the polygon
+     * @param xmax {int} the x-coordinate of the right upper corner of the polygon
+     * @param ymax {int} the y-coordinate of the right upper corner of the polygon
+     * @return {List} list of all the events that are found within the polygon
+     */
     public List<Event> searchWithin(final int xmin, final int ymin, final int xmax, final int ymax) {
         final List<Event> arr = new ArrayList<Event>();
         this.navigate(this.root_, new Function() {
@@ -204,6 +220,15 @@ public class QuadTree {
         }
     }
 
+    /**
+     * Determines whether or not some part of the node overlaps with the polygon that is being tested
+     * @param left {double} the left side of the polygon
+     * @param bottom {double} the lower side of the polygon
+     * @param right {double} the right side of the polygon
+     * @param top {double} the upper side of the polygon
+     * @param node {Node} the node being tested
+     * @return {boolean} whether or not the node overlaps with the polygon to some extent
+     */
     private boolean intersects(double left, double bottom, double right, double top, Node node) {
         return !(node.getX() > right ||
                 (node.getX() + node.getW()) < left ||

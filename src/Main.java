@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -33,5 +35,8 @@ public class Main {
             double cheapestTicketPrice = e.getLowestPricedTicket().getPrice();
             System.out.println("Event " + e.getEventCode() + " - $" + cheapestTicketPrice + ", Manhattan distance " + ManhattanDistances.calculateManhattanDistance(e, testPosition));
         }
+
+        GuiInterface inputInterface = new GuiInterface();
+        inputInterface.createTheFrame(testQuadTree);
     }
 }
