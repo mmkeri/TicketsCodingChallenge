@@ -3,7 +3,11 @@ import java.util.*;
 class BestSet {
     private SortedMap<Integer, SortedMap<Double,List<Event>>> distanceMap = new TreeMap<>();
     private int valueCount;
-    private final int capacity = 5;
+    private final int capacity;
+
+    public BestSet(int capacity){
+        this.capacity = capacity;
+    }
 
     public int getCurrentFurthestDistance() {
         return distanceMap.lastKey();
@@ -85,12 +89,6 @@ class BestSet {
     public int getValueCount() {
         return this.valueCount;
     }
-
-    /*
-    public Iterator<Map.Entry<Integer,Event>> iterator() {
-        // flattens the 2-dimensional collection
-    }
-    */
 
     public List<Map.Entry<Integer,Event>> flattened() {
         List<Map.Entry<Integer, Event>> results = new ArrayList<>(this.getValueCount());

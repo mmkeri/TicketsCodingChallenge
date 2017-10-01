@@ -94,7 +94,7 @@ public class GuiInterface{
             int userXCoord = Integer.parseInt(xCoord.getText().replace(" ", ""));
             int userYCoord = Integer.parseInt(yCoord.getText().replace(" ", ""));
             Position position = new Position(userXCoord, userYCoord);
-            List<Map.Entry<Integer,Event>> returnedEvents2 = SearchQuadTree.searchQuadTree2(position, quadTree);
+            List<Map.Entry<Integer,Event>> returnedEvents2 = quadTree.search(position, 5);
             Iterator<Map.Entry<Integer, Event>> itr = returnedEvents2.iterator();
 
             Map.Entry<Integer, Event> firstEntry = itr.next();

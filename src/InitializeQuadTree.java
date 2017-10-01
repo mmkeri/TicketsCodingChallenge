@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by mmkeri on 29/09/2017.
- */
 public class InitializeQuadTree {
 
     /**
@@ -21,7 +18,7 @@ public class InitializeQuadTree {
                 e.addTicket(tickets.get(i).getPrice(), tickets.get(i));
                 i++;
             }
-            quadTree.set(e, e.getxCoord(), e.getyCoord());
+            quadTree.set(e);
         }
         return quadTree;
     }

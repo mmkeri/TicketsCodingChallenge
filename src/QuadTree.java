@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 
 public class QuadTree {
 
 
     private Node root_;
-    private int count_ = 0;
 
     /**
      * Constructs a new quad tree.
@@ -45,9 +45,7 @@ public class QuadTree {
         if (x < root.getX() || y < root.getY() || x > root.getX() + root.getW() || y > root.getY() + root.getH()) {
             throw new QuadTreeException("Out of bounds : (" + x + ", " + y + ")");
         }
-        if (this.insert(root, new Event(event.getEventCode(), x, y, event.getEventTickets()))) {
-            this.count_++;
-        }
+        this.insert(root, event);
     }
 
     /**
@@ -113,83 +111,6 @@ public class QuadTree {
     }
 
     /**
-     * Attempts to balance a node. A node will need balancing if all its children
-     * are empty or it contains just one leaf.
-     * @param {QuadTree.Node} node The node to balance.
-     * @private
-     */
-    private void balance(Node node) {
-        switch (node.getNodeType()) {
-            case EMPTY:
-            case LEAF:
-                if (node.getParent() != null) {
-                    this.balance(node.getParent());
-                }
-                break;
-
-            case POINTER: {
-                Node nw = node.getNw();
-                Node ne = node.getNe();
-                Node sw = node.getSw();
-                Node se = node.getSe();
-                Node firstLeaf = null;
-
-                // Look for the first non-empty child, if there is more than one then we
-                // break as this node can't be balanced.
-                if (nw.getNodeType() != NodeType.EMPTY) {
-                    firstLeaf = nw;
-                }
-                if (ne.getNodeType() != NodeType.EMPTY) {
-                    if (firstLeaf != null) {
-                        break;
-                    }
-                    firstLeaf = ne;
-                }
-                if (sw.getNodeType() != NodeType.EMPTY) {
-                    if (firstLeaf != null) {
-                        break;
-                    }
-                    firstLeaf = sw;
-                }
-                if (se.getNodeType() != NodeType.EMPTY) {
-                    if (firstLeaf != null) {
-                        break;
-                    }
-                    firstLeaf = se;
-                }
-
-                if (firstLeaf == null) {
-                    // All child nodes are empty: so make this node empty.
-                    node.setNodeType(NodeType.EMPTY);
-                    node.setNw(null);
-                    node.setNe(null);
-                    node.setSw(null);
-                    node.setSe(null);
-
-                } else if (firstLeaf.getNodeType() == NodeType.POINTER) {
-                    // Only child was a pointer, therefore we can't rebalance.
-                    break;
-
-                } else {
-                    // Only child was a leaf: so update node's point and make it a leaf.
-                    node.setNodeType(NodeType.LEAF);
-                    node.setNw(null);
-                    node.setNe(null);
-                    node.setSw(null);
-                    node.setSe(null);
-                    node.setEvent(firstLeaf.getEvent());
-                }
-
-                // Try and balance the parent as well.
-                if (node.getParent() != null) {
-                    this.balance(node.getParent());
-                }
-            }
-            break;
-        }
-    }
-
-    /**
      * Returns the child quadrant within a node that contains the given (x, y)
      * coordinate.
      * @param {QuadTree.Node} parent The node.
@@ -223,7 +144,7 @@ public class QuadTree {
         node.setEvent(event);
     }
 
-    public void search(Position position, BestSet bestSet, Node node){
+    private void search(Position position, BestSet bestSet, Node node){
         int x = position.getxCoord();
         int y = position.getyCoord();
 
@@ -249,17 +170,38 @@ public class QuadTree {
 
         double mx = node.getX() + node.getW() / 2;
         double my = node.getY() + node.getH() / 2;
-        if (x < mx) {
-            if(y < my){
-                searchFourQuadrants(position, bestSet, node.getNw(), node.getNe(), node.getSw(), node.getSe());
+        double deltaX = x - mx;
+        double deltaY = y - my;
+        double absDeltaX = Math.abs(deltaX);
+        double absDeltaY = Math.abs(deltaY);
+
+        if (deltaX < 0) {
+            if(deltaY < 0){
+                if (absDeltaX > absDeltaY){
+                    searchFourQuadrants(position, bestSet, node.getNw(), node.getSw(), node.getNe(), node.getSe());
+                } else {
+                    searchFourQuadrants(position, bestSet, node.getNw(), node.getNe(), node.getSw(), node.getSe());
+                }
             } else {
-                searchFourQuadrants(position, bestSet, node.getSw(), node.getNw(), node.getSe(), node.getNe());
+                if(absDeltaX < absDeltaY){
+                    searchFourQuadrants(position, bestSet, node.getSw(), node.getSe(), node.getNw(), node.getNe());
+                } else {
+                    searchFourQuadrants(position, bestSet, node.getSw(), node.getNw(), node.getSe(), node.getNe());
+                }
             }
         } else {
-            if(y < my) {
-                searchFourQuadrants(position, bestSet, node.getNe(), node.getNw(), node.getSe(), node.getSw());
+            if(deltaY < 0) {
+                if(absDeltaX > absDeltaY){
+                    searchFourQuadrants(position, bestSet, node.getNe(), node.getSe(), node.getNw(), node.getSw());
+                } else {
+                    searchFourQuadrants(position, bestSet, node.getNe(), node.getNw(), node.getSe(), node.getSw());
+                }
             } else {
-                searchFourQuadrants(position, bestSet, node.getSe(), node.getSw(), node.getNe(), node.getNw());
+                if(absDeltaX < absDeltaY){
+                    searchFourQuadrants(position, bestSet, node.getSe(), node.getSw(), node.getNe(), node.getNw());
+                } else {
+                    searchFourQuadrants(position, bestSet, node.getSe(), node.getNe(), node.getSw(), node.getNw());
+                }
             }
         }
     }
@@ -269,5 +211,11 @@ public class QuadTree {
         search(position, bestSet, q2);
         search(position, bestSet, q3);
         search(position, bestSet, q4);
+    }
+
+    public List<Map.Entry<Integer,Event>> search(Position position, int numOfResults){
+        BestSet bestSet = new BestSet(numOfResults);
+        this.search(position, bestSet, this.getRootNode());
+        return bestSet.flattened();
     }
 }
