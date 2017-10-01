@@ -37,7 +37,9 @@ public class QuadTree {
      * @param {double} y The y-coordinate.
      * @param {Object} value The value associated with the point.
      */
-    public void set(Event event, int x, int y) {
+    public void set(Event event) {
+        int x = event.getxCoord();
+        int y = event.getyCoord();
 
         Node root = this.root_;
         if (x < root.getX() || y < root.getY() || x > root.getX() + root.getW() || y > root.getY() + root.getH()) {
@@ -46,273 +48,6 @@ public class QuadTree {
         if (this.insert(root, new Event(event.getEventCode(), x, y, event.getEventTickets()))) {
             this.count_++;
         }
-    }
-
-    /**
-     * Gets the value of the point at (x, y) or null if the point is empty.
-     *
-     * @param {double} x The x-coordinate.
-     * @param {double} y The y-coordinate.
-     * @param {Object} opt_default The default value to return if the node doesn't
-     *                 exist.
-     * @return {*} The value of the node, the default value if the node
-     *         doesn't exist, or undefined if the node doesn't exist and no default
-     *         has been provided.
-     */
-    public Object get(int x, int y, Object opt_default) {
-        Node node = this.find(this.root_, x, y);
-        return node != null ? node.getEvent().getLowestPricedTicket() : opt_default;
-    }
-
-    /**
-     * Removes a point from (x, y) if it exists.
-     *
-     * @param {double} x The x-coordinate.
-     * @param {double} y The y-coordinate.
-     * @return {Object} The value of the node that was removed, or null if the
-     *         node doesn't exist.
-     */
-    public Object remove(int x, int y) {
-        Node node = this.find(this.root_, x, y);
-        if (node != null) {
-            Object value = node.getEvent().getLowestPricedTicket();
-            node.setEvent(null);
-            node.setNodeType(NodeType.EMPTY);
-            this.balance(node);
-            this.count_--;
-            return value;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Returns true if the point at (x, y) exists in the tree.
-     *
-     * @param {double} x The x-coordinate.
-     * @param {double} y The y-coordinate.
-     * @return {boolean} Whether the tree contains a point at (x, y).
-     */
-    public boolean contains(int x, int y) {
-        return this.get(x, y, null) != null;
-    }
-
-    /**
-     * @return {boolean} Whether the tree is empty.
-     */
-    public boolean isEmpty() {
-        return this.root_.getNodeType() == NodeType.EMPTY;
-    }
-
-    /**
-     * @return {number} The number of items in the tree.
-     */
-    public int getCount() {
-        return this.count_;
-    }
-
-    /**
-     * Removes all items from the tree.
-     */
-    public void clear() {
-        this.root_.setNw(null);
-        this.root_.setNe(null);
-        this.root_.setSw(null);
-        this.root_.setSe(null);
-        this.root_.setNodeType(NodeType.EMPTY);
-        this.root_.setEvent(null);
-        this.count_ = 0;
-    }
-
-    /**
-     * Returns an array containing the coordinates of each point stored in the tree.
-     * @return {Array.<Point>} Array of coordinates.
-     */
-    public Event[] getKeys() {
-        final List<Event> arr = new ArrayList<Event>();
-        this.traverse(this.root_, new Function() {
-            @Override
-            public void call(QuadTree quadTree, Node node) {
-                arr.add(node.getEvent());
-            }
-        });
-        return arr.toArray(new Event[arr.size()]);
-    }
-
-    /**
-     * Returns an array containing all values stored within the tree.
-     * @return {Array.<Object>} The values stored within the tree.
-     */
-    public Object[] getValues() {
-        final List<Object> arr = new ArrayList<Object>();
-        this.traverse(this.root_, new Function() {
-            @Override
-            public void call(QuadTree quadTree, Node node) {
-                arr.add(node.getEvent().getLowestPricedTicket());
-            }
-        });
-
-        return arr.toArray(new Object[arr.size()]);
-    }
-
-    /**
-     * Determines whether a
-     * @param xmin
-     * @param ymin
-     * @param xmax
-     * @param ymax
-     * @return
-     */
-    public Point[] searchIntersect(final int xmin, final int ymin, final int xmax, final int ymax) {
-        final List<Event> arr = new ArrayList<Event>();
-        this.navigate(this.root_, new Function() {
-            @Override
-            public void call(QuadTree quadTree, Node node) {
-                Event ev = node.getEvent();
-                if (ev.getxCoord() < xmin || ev.getxCoord() > xmax || ev.getyCoord() < ymin || ev.getyCoord() > ymax) {
-                    // Definitely not within the polygon!
-                } else {
-                    arr.add(node.getEvent());
-                }
-
-            }
-        }, xmin, ymin, xmax, ymax);
-        return arr.toArray(new Point[arr.size()]);
-    }
-
-    /**
-     * Finds nodes that are located within the polygon outlined by the provided minimum and maximum coordinates
-     * @param xmin {int} the x-coordinate of the left lower corner of the polygon
-     * @param ymin {int} the y-coordinate of the left lower corner of the polygon
-     * @param xmax {int} the x-coordinate of the right upper corner of the polygon
-     * @param ymax {int} the y-coordinate of the right upper corner of the polygon
-     * @return {List} list of all the events that are found within the polygon
-     */
-    public List<Event> searchWithin(final int xmin, final int ymin, final int xmax, final int ymax) {
-        final List<Event> arr = new ArrayList<Event>();
-        this.navigate(this.root_, new Function() {
-            @Override
-            public void call(QuadTree quadTree, Node node) {
-                Event ev = node.getEvent();
-                if (ev.getxCoord() > xmin && ev.getxCoord() < xmax && ev.getyCoord() > ymin && ev.getyCoord() < ymax) {
-                    arr.add(node.getEvent());
-                }
-            }
-        }, xmin, ymin, xmax, ymax);
-        return arr;
-    }
-
-    public void navigate(Node node, Function func, double xmin, double ymin, double xmax, double ymax) {
-        switch (node.getNodeType()) {
-            case LEAF:
-                func.call(this, node);
-                break;
-
-            case POINTER:
-                if (intersects(xmin, ymax, xmax, ymin, node.getNe()))
-                    this.navigate(node.getNe(), func, xmin, ymin, xmax, ymax);
-                if (intersects(xmin, ymax, xmax, ymin, node.getSe()))
-                    this.navigate(node.getSe(), func, xmin, ymin, xmax, ymax);
-                if (intersects(xmin, ymax, xmax, ymin, node.getSw()))
-                    this.navigate(node.getSw(), func, xmin, ymin, xmax, ymax);
-                if (intersects(xmin, ymax, xmax, ymin, node.getNw()))
-                    this.navigate(node.getNw(), func, xmin, ymin, xmax, ymax);
-                break;
-        }
-    }
-
-    /**
-     * Determines whether or not some part of the node overlaps with the polygon that is being tested
-     * @param left {double} the left side of the polygon
-     * @param bottom {double} the lower side of the polygon
-     * @param right {double} the right side of the polygon
-     * @param top {double} the upper side of the polygon
-     * @param node {Node} the node being tested
-     * @return {boolean} whether or not the node overlaps with the polygon to some extent
-     */
-    private boolean intersects(double left, double bottom, double right, double top, Node node) {
-        return !(node.getX() > right ||
-                (node.getX() + node.getW()) < left ||
-                node.getY() > bottom ||
-                (node.getY() + node.getH()) < top);
-    }
-    /**
-     * Clones the quad-tree and returns the new instance.
-     * @return {QuadTree} A clone of the tree.
-     */
-    public QuadTree clone() {
-        int x1 = this.root_.getX();
-        int y1 = this.root_.getY();
-        int x2 = (int)(x1 + this.root_.getW());
-        int y2 = (int)(y1 + this.root_.getH());
-        final QuadTree clone = new QuadTree(x1, y1, x2, y2);
-        // This is inefficient as the clone needs to recalculate the structure of the
-        // tree, even though we know it already.  But this is easier and can be
-        // optimized when/if needed.
-        this.traverse(this.root_, new Function() {
-            @Override
-            public void call(QuadTree quadTree, Node node) {
-                clone.set(node.getEvent(), node.getEvent().getxCoord(), node.getEvent().getyCoord());
-            }
-        });
-
-
-        return clone;
-    }
-
-    /**
-     * Traverses the tree depth-first, with quadrants being traversed in clockwise
-     * order (NE, SE, SW, NW).  The provided function will be called for each
-     * leaf node that is encountered.
-     * @param {QuadTree.Node} node The current node.
-     * @param {function(QuadTree.Node)} fn The function to call
-     *     for each leaf node. This function takes the node as an argument, and its
-     *     return value is irrelevant.
-     * @private
-     */
-    public void traverse(Node node, Function func) {
-        switch (node.getNodeType()) {
-            case LEAF:
-                func.call(this, node);
-                break;
-
-            case POINTER:
-                this.traverse(node.getNe(), func);
-                this.traverse(node.getSe(), func);
-                this.traverse(node.getSw(), func);
-                this.traverse(node.getNw(), func);
-                break;
-        }
-    }
-
-    /**
-     * Finds a leaf node with the same (x, y) coordinates as the target point, or
-     * null if no point exists.
-     * @param {QuadTree.Node} node The node to search in.
-     * @param {number} x The x-coordinate of the point to search for.
-     * @param {number} y The y-coordinate of the point to search for.
-     * @return {QuadTree.Node} The leaf node that matches the target,
-     *     or null if it doesn't exist.
-     * @private
-     */
-    public Node find(Node node, int x, int y) {
-        Node response = null;
-        switch (node.getNodeType()) {
-            case EMPTY:
-                break;
-
-            case LEAF:
-                response = node.getEvent().getxCoord() == x && node.getEvent().getyCoord() == y ? node : null;
-                break;
-
-            case POINTER:
-                response = this.find(this.getQuadrantForPoint(node, x, y), x, y);
-                break;
-
-            default:
-                throw new QuadTreeException("Invalid nodeType");
-        }
-        return response;
     }
 
     /**
@@ -488,15 +223,16 @@ public class QuadTree {
         node.setEvent(event);
     }
 
-    public void search(int x, int y, BestSet bestSet, Node node){
+    public void search(Position position, BestSet bestSet, Node node){
+        int x = position.getxCoord();
+        int y = position.getyCoord();
 
         if(node == null){
             return;
         }
-        
+
         int x1 = node.getX(), y1 = node.getY();
         double x2 = node.getW() + x1, y2 = node.getH() + y1;
-        Position custPosition = new Position(x, y);
 
         if(bestSet.isAtCapacity()){
             int furthestDistance = bestSet.getCurrentFurthestDistance();
@@ -507,7 +243,7 @@ public class QuadTree {
         }
         Event nodeEvent = node.getEvent();
         if(nodeEvent != null) {
-            int distance = ManhattanDistances.calculateManhattanDistance(nodeEvent, custPosition);
+            int distance = ManhattanDistances.calculateManhattanDistance(nodeEvent, position);
             bestSet.updateIfBetter(distance, nodeEvent);
         }
 
@@ -515,27 +251,23 @@ public class QuadTree {
         double my = node.getY() + node.getH() / 2;
         if (x < mx) {
             if(y < my){
-                //parent.getNw();
-                searchFourQuadrants(x, y, bestSet, node.getNw(), node.getNe(), node.getSw(), node.getSe());
+                searchFourQuadrants(position, bestSet, node.getNw(), node.getNe(), node.getSw(), node.getSe());
             } else {
-                //parent.getSw();
-                searchFourQuadrants(x, y, bestSet, node.getSw(), node.getNw(), node.getSe(), node.getNe());
+                searchFourQuadrants(position, bestSet, node.getSw(), node.getNw(), node.getSe(), node.getNe());
             }
         } else {
             if(y < my) {
-                //parent.getNe();
-                searchFourQuadrants(x, y, bestSet, node.getNe(), node.getNw(), node.getSe(), node.getSw());
+                searchFourQuadrants(position, bestSet, node.getNe(), node.getNw(), node.getSe(), node.getSw());
             } else {
-                //parent.getSe();
-                searchFourQuadrants(x, y, bestSet, node.getSe(), node.getSw(), node.getNe(), node.getNw());
+                searchFourQuadrants(position, bestSet, node.getSe(), node.getSw(), node.getNe(), node.getNw());
             }
         }
     }
 
-    public void searchFourQuadrants(int x, int y, BestSet bestSet, Node q1, Node q2, Node q3, Node q4){
-        search(x, y, bestSet, q1);
-        search(x, y, bestSet, q2);
-        search(x, y, bestSet, q3);
-        search(x, y, bestSet, q4);
+    public void searchFourQuadrants(Position position, BestSet bestSet, Node q1, Node q2, Node q3, Node q4){
+        search(position, bestSet, q1);
+        search(position, bestSet, q2);
+        search(position, bestSet, q3);
+        search(position, bestSet, q4);
     }
 }

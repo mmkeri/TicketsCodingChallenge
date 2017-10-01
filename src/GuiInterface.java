@@ -93,11 +93,8 @@ public class GuiInterface{
         public void actionPerformed(ActionEvent e) {
             int userXCoord = Integer.parseInt(xCoord.getText().replace(" ", ""));
             int userYCoord = Integer.parseInt(yCoord.getText().replace(" ", ""));
-            List<Event> returnedEvents = SearchQuadTree.searchQuadTree(userXCoord, userYCoord, quadTree);
-            //BestSet lowestEvents = findCheapestEvents(returnedEvents);
-            //Collection<Map.Entry<Integer, Event>> orderedCollection = lowestEvents.flattened();
-            List<Map.Entry<Integer,Event>> returnedEvents2 = SearchQuadTree.searchQuadTree2(userXCoord, userYCoord, quadTree);
-            //Iterator<Map.Entry<Integer, Event>> itr = orderedCollection.iterator();
+            Position position = new Position(userXCoord, userYCoord);
+            List<Map.Entry<Integer,Event>> returnedEvents2 = SearchQuadTree.searchQuadTree2(position, quadTree);
             Iterator<Map.Entry<Integer, Event>> itr = returnedEvents2.iterator();
 
             Map.Entry<Integer, Event> firstEntry = itr.next();
@@ -134,15 +131,4 @@ public class GuiInterface{
             result5.setText("");
         }
     }
-    /*
-    private BestSet findCheapestEvents (List<Event> returnedEvents){
-        Position userPosition = new Position(Integer.parseInt(xCoord.getText().replace(" ", "")),
-                Integer.parseInt(yCoord.getText().replace(" ", "")));
-        BestSet cheapestEvents = new BestSet();
-        for(Event e : returnedEvents){
-            cheapestEvents.add(ManhattanDistances.calculateManhattanDistance(e, userPosition), e);
-        }
-        return cheapestEvents;
-    }
-    */
 }
